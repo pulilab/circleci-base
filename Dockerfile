@@ -1,10 +1,14 @@
-FROM circleci/python:ubuntu:3.7.5-stretch
+FROM ubuntu:18.04
 RUN apt-get update
 RUN export DEBIAN_FRONTEND=noninteractive
 RUN apt-get install -y tzdata
 RUN ln -fs /usr/share/zoneinfo/Europe/London /etc/localtime
 RUN dpkg-reconfigure --frontend noninteractive tzdata
 RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:ubuntu-toolchain-r/ppa
+RUN apt-get install -y python3.7
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
 RUN apt-get install -y wget gnupg python3-dev python3-venv python3.7-dev python3.7-venv curl git ssh tar gzip ca-certificates
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash
