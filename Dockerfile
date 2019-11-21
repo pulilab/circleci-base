@@ -1,4 +1,4 @@
-FROM circleci/python:3.7.5-stretch
+FROM circleci/python:ubuntu:3.7.5-stretch
 RUN apt-get update
 RUN export DEBIAN_FRONTEND=noninteractive
 RUN apt-get install -y tzdata
