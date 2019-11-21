@@ -19,7 +19,6 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update
 RUN apt-get install -y nodejs
 RUN apt-get install -y build-essential yarn postgresql-10 redis-server
-RUN apt-get install -y binutils libproj-dev gdal-bin postgresql-10-postgis-scripts
 COPY --chown=postgres:postgres  pg_hba.conf /etc/postgresql/10/main
 RUN chmod 644 /etc/postgresql/10/main/pg_hba.conf
 COPY --chown=redis:redis  redis.conf /etc/redis/
